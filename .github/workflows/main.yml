@@ -52,3 +52,18 @@ jobs:
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicdpractice:latest
             platforms: linux/amd64,linux/arm64
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker
+    steps:
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /root/ci-cd_practice
+            docker-compose pull
+            docker-compose up -d
+            docker image prune -f
