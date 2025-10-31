@@ -13,3 +13,7 @@ app.get('/test', (req, res) => {
 app.get('/test2', (req, res) => {
     res.json({message: 'test2'})
 })
+
+app.get('/test3', (req, res) => {
+    res.json({message: 'test3'})
+})
