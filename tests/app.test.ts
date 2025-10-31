@@ -9,3 +9,10 @@ describe('GET /', () => {
     expect(res.body).toEqual({ message: 'Hello World!' });
   });
 });
+
+describe("GET /test", () => {
+  it('should return test', async () => {
+    const res = await request(app).get('/test')
+    expect(res.body).toEqual({message: 'test'})
+  })
+})
