@@ -9,3 +9,7 @@ app.get('/', (req, res) => {
 app.get('/test', (req, res) => {
     res.json({message: 'test'})
 })
+
+app.get('/test2', (req, res) => {
+    res.json({message: 'test2'})
+})
